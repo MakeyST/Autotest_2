@@ -11,8 +11,9 @@ repositories {
 }
 
 def allureVersion = '2.18.1',
-    selenideVersion = '6.6.3',
-    junitVersion = "5.8.2"
+    selenideVersion = '6.6.6',
+    ownerVersion = '1.0.12',
+    junitVersion = '5.9.0'
 
 allure {
     report {
@@ -35,9 +36,10 @@ dependencies {
             "io.qameta.allure:allure-selenide:$allureVersion",
             'io.rest-assured:rest-assured:5.1.1',
             "io.qameta.allure:allure-rest-assured:$allureVersion",
-            "org.aeonbits.owner:owner:1.0.12",
+            "org.aeonbits.owner:owner:$ownerVersion",
             'org.assertj:assertj-core:3.23.1',
             'org.slf4j:slf4j-simple:1.7.36',
+            'org.testng:testng:7.6.1',
             "org.junit.jupiter:junit-jupiter:$junitVersion")
 }
 

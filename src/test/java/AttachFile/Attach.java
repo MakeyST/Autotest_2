@@ -1,19 +1,28 @@
 package AttachFile;
 
 import com.codeborne.selenide.Selenide;
+import io.qameta.allure.Allure;
 import io.qameta.allure.Attachment;
+import org.junit.platform.commons.logging.Logger;
+import org.junit.platform.commons.logging.LoggerFactory;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 
+import static com.codeborne.selenide.Selenide.sleep;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 import static org.openqa.selenium.logging.LogType.BROWSER;
+import static org.openqa.selenium.remote.HttpSessionId.getSessionId;
 
 public class Attach {
+    public static final Logger LOGGER = LoggerFactory.getLogger(Attach.class);
     @Attachment(value = "{attachName}", type = "image/png")
     public static byte[] screenshotAs(String attachName) {
         return ((TakesScreenshot) getWebDriver()).getScreenshotAs(OutputType.BYTES);
@@ -57,4 +66,5 @@ public class Attach {
     public static String getSessionId(){
         return ((RemoteWebDriver) getWebDriver()).getSessionId().toString();
     }
+
 }

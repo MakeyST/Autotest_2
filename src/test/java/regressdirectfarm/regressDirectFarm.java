@@ -2,6 +2,9 @@ package regressdirectfarm;
 
 import AttachFile.Attach;
 import Authorization.Authorization;
+import Case.CommentPostPlant;
+import Case.CreatePostPlant;
+import Case.DeletePostPlant;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.WebDriverRunner;
 import com.codeborne.selenide.logevents.SelenideLogger;
@@ -18,10 +21,11 @@ import static com.codeborne.selenide.Selenide.open;
 import static io.qameta.allure.Allure.description;
 import static io.qameta.allure.Allure.step;
 
-public class RegressDirectFarm {
+public class regressDirectFarm {
 
     @BeforeEach
     public void setup(){
+
         description("LoggerAllure включен");
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
         SelenideLogger.addListener("allure", new AllureSelenide());
@@ -60,6 +64,46 @@ public class RegressDirectFarm {
             signin.authorization();
             Allure.getLifecycle().addAttachment("Screnshot", "image/png", "png",
                     ((TakesScreenshot) WebDriverRunner.getWebDriver()).getScreenshotAs(OutputType.BYTES));
+           Attach.browserConsoleLogs();
+        });
+    }
+    @DisplayName("Растениеводство создание поста")
+    @Test
+    public void createPostPlant(){
+        CreatePostPlant cpt = new CreatePostPlant();
+        SelenideLogger.addListener("allure", new AllureSelenide());
+        step("Создание поста Растениеводство", () -> {
+        cpt.createPostPlant();
+            Allure.getLifecycle().addAttachment("Screnshot", "image/png", "png",
+                    ((TakesScreenshot) WebDriverRunner.getWebDriver()).getScreenshotAs(OutputType.BYTES));
+            Attach.browserConsoleLogs();
+        });
+        }
+    @DisplayName("Растениеводство создание комментария")
+    @Test
+    public void commentPostPlant(){
+        CommentPostPlant cpt = new CommentPostPlant();
+        SelenideLogger.addListener("allure", new AllureSelenide());
+        step("Создание комментария в моем посте", () -> {
+        cpt.commentPostPlant();
+            Allure.getLifecycle().addAttachment("Screnshot", "image/png", "png",
+                    ((TakesScreenshot) WebDriverRunner.getWebDriver()).getScreenshotAs(OutputType.BYTES));
+            Attach.browserConsoleLogs();
+        });
+    }
+    @DisplayName("Растениеводство удаление")
+
+    public void deletePostPlant(){
+        DeletePostPlant dpt = new DeletePostPlant();
+        SelenideLogger.addListener("allure", new AllureSelenide());
+        step("Удаление поста Растениеводство", () -> {
+        dpt.deletePostPlant();
+            Allure.getLifecycle().addAttachment("Screnshot", "image/png", "png",
+                    ((TakesScreenshot) WebDriverRunner.getWebDriver()).getScreenshotAs(OutputType.BYTES));
+            Attach.browserConsoleLogs();
         });
     }
 }
+
+
+
