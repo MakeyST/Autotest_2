@@ -67,6 +67,7 @@ public class regressDirectFarm {
            Attach.browserConsoleLogs();
         });
     }
+
     @DisplayName("Растениеводство создание поста")
     @Test
     public void createPostPlant(){
@@ -79,6 +80,7 @@ public class regressDirectFarm {
             Attach.browserConsoleLogs();
         });
         }
+
     @DisplayName("Растениеводство создание комментария")
     @Test
     public void commentPostPlant(){
@@ -91,8 +93,9 @@ public class regressDirectFarm {
             Attach.browserConsoleLogs();
         });
     }
+    
     @DisplayName("Растениеводство удаление")
-
+    @Test
     public void deletePostPlant(){
         DeletePostPlant dpt = new DeletePostPlant();
         SelenideLogger.addListener("allure", new AllureSelenide());

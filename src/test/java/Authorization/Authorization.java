@@ -6,8 +6,8 @@ import org.junit.jupiter.api.Test;
 import static com.codeborne.selenide.Selenide.*;
 
 public class Authorization {
-String LoginMail = "i.makeenkov@direct.farm";
-String LoginPassword = "12345678";
+String LoginMail = "test";
+String LoginPassword = "test";
     @BeforeAll
     public void authorization() {
         $(".df-button").click();
